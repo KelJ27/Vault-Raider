@@ -12,16 +12,16 @@ func _ready():
 
 func get_input():
     velocity = Vector2()
-    if Input.is_action_pressed('Right'):
+    if Input.is_action_pressed("Right"):
         velocity.x += 1
 				animPlayer.play("Walk Right", -speedMultiplier)
-    if Input.is_action_pressed('Left'):
+    if Input.is_action_pressed("Left"):
         velocity.x -= 1
 				animPlayer.play("Walk Left", -speedMultiplier)
-    if Input.is_action_pressed('Down'):
+    if Input.is_action_pressed("Down"):
         velocity.y += 1
 				animPlayer.play("Walk Down", -speedMultiplier)
-    if Input.is_action_pressed('Up'):
+    if Input.is_action_pressed("Up"):
         velocity.y -= 1
 				animPlayer.play("Walk Up", -speedMultiplier)
     velocity = velocity.normalized() * speed
