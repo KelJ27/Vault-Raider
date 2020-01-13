@@ -258,7 +258,6 @@ anims/Idle = SubResource( 2 )
 "anims/Walk Up" = SubResource( 6 )
 
 [node name="Robber" type="KinematicBody2D" parent="."]
-script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Robber"]
 position = Vector2( 273.441, -133.76 )
