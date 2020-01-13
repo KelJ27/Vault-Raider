@@ -5,7 +5,7 @@ export (int) var speed = 200
 var velocity = Vector2()
 var animPlayer
 var speedMultiplier = 8
-var movement
+var movement = "Idle"
 
 func _ready():
 	set_physics_process(true)
@@ -16,7 +16,7 @@ func getInput():
 	if Input.is_action_pressed("Right"):
 		movement = "Walk Right"
 		velocity.x += 1
-		animPlayer.play(movement, -speedMultiplier)
+		animPlayer.play("Walk Right", -speedMultiplier)
 	elif Input.is_action_pressed("Left"):
 		movement = "Walk Left"
 		velocity.x -= 1
