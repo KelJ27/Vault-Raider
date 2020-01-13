@@ -237,7 +237,7 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
 editor/display_folded = true
-position = Vector2( -216.842, 3.94736 )
+position = Vector2( -268.536, -2.85446 )
 texture = ExtResource( 2 )
 vframes = 6
 hframes = 5
