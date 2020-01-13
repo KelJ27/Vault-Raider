@@ -260,7 +260,7 @@ anims/Idle = SubResource( 2 )
 [node name="Robber" type="KinematicBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Robber"]
-position = Vector2( 186.377, -174.571 )
+position = Vector2( 273.441, -133.76 )
 texture = ExtResource( 3 )
 vframes = 6
 hframes = 4
@@ -279,6 +279,7 @@ anims/Stealing = SubResource( 9 )
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 54.4149, 251.669 )
 texture = ExtResource( 4 )
 vframes = 2
 hframes = 11
