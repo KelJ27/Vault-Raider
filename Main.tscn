@@ -1,9 +1,18 @@
+
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Characters/Conrad_Spritesheet500%.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Robber.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/Characters/Robber700%.png" type="Texture" id=4]
+
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Characters/Conrad_Spritesheet500%.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Characters/Robber700%.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Valuables/Diamond.png" type="Texture" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -258,10 +267,16 @@ anims/Idle = SubResource( 2 )
 "anims/Walk Up" = SubResource( 6 )
 
 [node name="Robber" type="KinematicBody2D" parent="."]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Robber"]
+
+position = Vector2( 186.377, -174.571 )
+texture = ExtResource( 4 )
+
 position = Vector2( 273.441, -133.76 )
 texture = ExtResource( 3 )
+
 vframes = 6
 hframes = 4
 
