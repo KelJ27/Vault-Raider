@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Characters/Conrad_Spritesheet500%.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Characters/Robber700%.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Valuables/Diamond.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Diamond.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/Valuables/Diamond.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -195,6 +196,20 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=15]
 resource_name = "Pause"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
 
 [sub_resource type="Animation" id=16]
 resource_name = "Shine"
@@ -277,12 +292,14 @@ anims/Stealing = SubResource( 9 )
 "anims/Walk Up" = SubResource( 13 )
 
 [node name="Diamond" type="KinematicBody2D" parent="."]
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Diamond"]
 position = Vector2( 54.4149, 251.669 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 vframes = 2
 hframes = 11
+frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Diamond"]
 shape = SubResource( 14 )
