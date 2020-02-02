@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 enum {
 	PAUSE,
@@ -6,6 +6,7 @@ enum {
 	SHINE
 }
 
+var picked = false
 var state = SPARKLE
 var newState = SHINE
 var prevState
@@ -37,3 +38,9 @@ func TimerTimeout():
 		state = newState
 		newState = prevState
 
+func _input(event):
+	if Input.is_action_just_pressed("e"):
+		var bodies = $Detector.get_overlapping_bodies()
+		for b in bodies:
+			if b.name == "Player" and picked == false:
+				picked = true

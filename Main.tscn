@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Characters/Conrad_Spritesheet500%.png" type="Texture" id=2]
@@ -90,7 +90,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 30, 30 )
+extents = Vector2( 46, 81 )
 
 [sub_resource type="RectangleShape2D" id=7]
 
@@ -194,7 +194,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 25, 25 )
 
 [sub_resource type="Animation" id=15]
 resource_name = "Pause"
@@ -247,6 +246,8 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 }
 
+[sub_resource type="RectangleShape2D" id=20]
+
 [node name="Main" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
@@ -274,11 +275,11 @@ anims/Idle = SubResource( 1 )
 "anims/Walk Up" = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( -8.21347, 13.3469 )
+position = Vector2( -9.02798, -10.2738 )
 shape = SubResource( 18 )
 
 [node name="Robber" type="KinematicBody2D" parent="."]
-position = Vector2( 820.599, 117.441 )
+position = Vector2( 753.351, 198.549 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -301,12 +302,15 @@ anims/Stealing = SubResource( 9 )
 "anims/Walk Right" = SubResource( 12 )
 "anims/Walk Up" = SubResource( 13 )
 
-[node name="Diamond" type="KinematicBody2D" parent="."]
-position = Vector2( 559.36, 269.479 )
+[node name="Diamond" type="RigidBody2D" parent="."]
+position = Vector2( 563.432, 275.995 )
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Diamond"]
+position = Vector2( 2.43842, -4.87671 )
+shape = SubResource( 19 )
 
 [node name="Sprite" type="Sprite" parent="Diamond"]
 position = Vector2( 2.73163, -5.27747 )
@@ -314,14 +318,15 @@ texture = ExtResource( 5 )
 vframes = 2
 hframes = 11
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Diamond"]
-position = Vector2( 2.43842, -4.87671 )
-shape = SubResource( 19 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Diamond"]
 anims/Pause = SubResource( 15 )
 anims/Shine = SubResource( 16 )
 anims/Sparkle = SubResource( 17 )
 
 [node name="Timer" type="Timer" parent="Diamond"]
+
+[node name="Detector" type="Area2D" parent="Diamond"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Diamond/Detector"]
+shape = SubResource( 20 )
 [connection signal="timeout" from="Diamond/Timer" to="Diamond" method="TimerTimeout"]
