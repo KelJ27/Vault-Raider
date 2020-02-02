@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Characters/Conrad_Spritesheet500%.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Characters/Robber700%.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Characters/Conrad_Spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Characters/Robber200%.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Diamond.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Valuables/Diamond.png" type="Texture" id=5]
 
@@ -37,7 +37,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 18, 19, 20, 21 ]
+"values": [ 20, 21, 22, 23 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -53,7 +53,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 9, 10, 11, 12, 13 ]
+"values": [ 10, 11, 12, 13, 14 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -69,12 +69,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 6, 7, 8 ]
+"values": [ 9, 5, 6, 7, 8 ]
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "Walk Up"
-length = 0.8
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -86,13 +86,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 14, 15, 16, 17 ]
+"values": [ 15, 16, 17, 18 ]
 }
 
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 46, 81 )
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 9, 16 )
 
 [sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 13.5195, 18.9349 )
 
 [sub_resource type="Animation" id=8]
 resource_name = "Idle"
@@ -193,7 +194,8 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19 ]
 }
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 7, 7 )
 
 [sub_resource type="Animation" id=15]
 resource_name = "Pause"
@@ -246,12 +248,13 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 }
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 7, 7 )
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 402.08, 99.9557 )
+position = Vector2( 520.79, 195.55 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -260,8 +263,9 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Player"]
 position = Vector2( -1.16522, -0.0533447 )
 texture = ExtResource( 2 )
-vframes = 6
+vframes = 7
 hframes = 5
+frame = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player/Sprite"]
 current = true
@@ -275,11 +279,14 @@ anims/Idle = SubResource( 1 )
 "anims/Walk Up" = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( -9.02798, -10.2738 )
-shape = SubResource( 18 )
+position = Vector2( -2.55902, -1.75373 )
+shape = SubResource( 6 )
+
+[node name="Position2D" type="Position2D" parent="Player"]
+position = Vector2( 0, 1 )
 
 [node name="Robber" type="KinematicBody2D" parent="."]
-position = Vector2( 753.351, 198.549 )
+position = Vector2( 706.595, 183.836 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -291,7 +298,7 @@ vframes = 6
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Robber"]
-visible = false
+position = Vector2( -9.10663, -12.3515 )
 shape = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Robber"]
@@ -303,14 +310,16 @@ anims/Stealing = SubResource( 9 )
 "anims/Walk Up" = SubResource( 13 )
 
 [node name="Diamond" type="RigidBody2D" parent="."]
-position = Vector2( 563.432, 275.995 )
-collision_layer = 2
-collision_mask = 2
+position = Vector2( 575.859, 248.657 )
+gravity_scale = 0.0
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Diamond"]
 position = Vector2( 2.43842, -4.87671 )
-shape = SubResource( 19 )
+shape = SubResource( 14 )
 
 [node name="Sprite" type="Sprite" parent="Diamond"]
 position = Vector2( 2.73163, -5.27747 )
@@ -326,7 +335,9 @@ anims/Sparkle = SubResource( 17 )
 [node name="Timer" type="Timer" parent="Diamond"]
 
 [node name="Detector" type="Area2D" parent="Diamond"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Diamond/Detector"]
-shape = SubResource( 20 )
+position = Vector2( 2.63519, -4.21631 )
+shape = SubResource( 18 )
 [connection signal="timeout" from="Diamond/Timer" to="Diamond" method="TimerTimeout"]

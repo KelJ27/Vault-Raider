@@ -21,7 +21,10 @@ func _ready():
 	timer.start()
 
 func _process(delta):
+	if picked == true:
+		self.position = get_node("../Player/Position2D").global_position
 	playAnim()
+	_input(picked)
 
 func playAnim():
 	match state:
