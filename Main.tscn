@@ -89,7 +89,8 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 30, 30 )
 
 [sub_resource type="RectangleShape2D" id=7]
 
@@ -192,7 +193,8 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19 ]
 }
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 25, 25 )
 
 [sub_resource type="Animation" id=15]
 resource_name = "Pause"
@@ -248,10 +250,14 @@ tracks/0/keys = {
 [node name="Main" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 402.08, 99.9557 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 518.641, 303.525 )
+position = Vector2( -1.16522, -0.0533447 )
 texture = ExtResource( 2 )
 vframes = 6
 hframes = 5
@@ -259,9 +265,6 @@ hframes = 5
 [node name="Camera2D" type="Camera2D" parent="Player/Sprite"]
 current = true
 smoothing_enabled = true
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 anims/Idle = SubResource( 1 )
@@ -271,24 +274,23 @@ anims/Idle = SubResource( 1 )
 "anims/Walk Up" = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 6 )
-disabled = true
+position = Vector2( -8.21347, 13.3469 )
+shape = SubResource( 18 )
+
+[node name="Robber" type="KinematicBody2D" parent="."]
+position = Vector2( 820.599, 117.441 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Robber" type="KinematicBody2D" parent="."]
-
 [node name="Sprite" type="Sprite" parent="Robber"]
-position = Vector2( 1163.38, 204.58 )
+position = Vector2( -9.01038, -11.2671 )
 texture = ExtResource( 3 )
 vframes = 6
 hframes = 4
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Robber"]
+visible = false
 shape = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Robber"]
@@ -300,19 +302,26 @@ anims/Stealing = SubResource( 9 )
 "anims/Walk Up" = SubResource( 13 )
 
 [node name="Diamond" type="KinematicBody2D" parent="."]
+position = Vector2( 559.36, 269.479 )
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Diamond"]
-position = Vector2( 946.402, 505.937 )
+position = Vector2( 2.73163, -5.27747 )
 texture = ExtResource( 5 )
 vframes = 2
 hframes = 11
-frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Diamond"]
-shape = SubResource( 14 )
+position = Vector2( 2.43842, -4.87671 )
+shape = SubResource( 19 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Diamond"]
 anims/Pause = SubResource( 15 )
 anims/Shine = SubResource( 16 )
 anims/Sparkle = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="Diamond"]
+[connection signal="timeout" from="Diamond/Timer" to="Diamond" method="TimerTimeout"]
