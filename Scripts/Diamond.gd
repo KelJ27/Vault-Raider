@@ -23,6 +23,9 @@ func _ready():
 func _process(delta):
 	if picked == true:
 		self.position = get_node("../Player/Position2D").global_position
+		sleeping = true
+	else:
+		sleeping = false
 	playAnim()
 	_input(picked)
 
@@ -42,8 +45,11 @@ func TimerTimeout():
 		newState = prevState
 
 func _input(event):
-	if Input.is_action_just_pressed("e"):
+	if Input.is_action_just_pressed("PickUp"):
 		var bodies = $Detector.get_overlapping_bodies()
 		for b in bodies:
 			if b.name == "Player" and picked == false:
 				picked = true
+	if Input.is_action_pressed("Drop") and picked == true:
+		picked = false
+		#get_node("../player").can_pick = true

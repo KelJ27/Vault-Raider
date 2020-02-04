@@ -254,11 +254,12 @@ extents = Vector2( 7, 7 )
 [node name="Main" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 520.79, 195.55 )
+position = Vector2( 523.972, 194.456 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+speed = 100
 
 [node name="Sprite" type="Sprite" parent="Player"]
 position = Vector2( -1.16522, -0.0533447 )
@@ -283,7 +284,7 @@ position = Vector2( -2.55902, -1.75373 )
 shape = SubResource( 6 )
 
 [node name="Position2D" type="Position2D" parent="Player"]
-position = Vector2( 0, 1 )
+position = Vector2( -5.1709, 7.46361 )
 
 [node name="Robber" type="KinematicBody2D" parent="."]
 position = Vector2( 706.595, 183.836 )
@@ -311,6 +312,9 @@ anims/Stealing = SubResource( 9 )
 
 [node name="Diamond" type="RigidBody2D" parent="."]
 position = Vector2( 575.859, 248.657 )
+input_pickable = true
+collision_layer = 2
+collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource( 4 )
 __meta__ = {
