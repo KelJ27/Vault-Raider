@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Characters/Conrad_Spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Characters/Robber200%.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Diamond.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Valuables/Diamond.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Robber.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -288,6 +289,7 @@ position = Vector2( -5.1709, 7.46361 )
 
 [node name="Robber" type="KinematicBody2D" parent="."]
 position = Vector2( 706.595, 183.836 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
