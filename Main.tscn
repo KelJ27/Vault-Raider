@@ -312,6 +312,9 @@ anims/Stealing = SubResource( 9 )
 "anims/Walk Right" = SubResource( 12 )
 "anims/Walk Up" = SubResource( 13 )
 
+[node name="Timer" type="Timer" parent="Robber"]
+autostart = true
+
 [node name="Diamond" type="RigidBody2D" parent="."]
 position = Vector2( 575.859, 248.657 )
 input_pickable = true
@@ -346,4 +349,5 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Diamond/Detector"]
 position = Vector2( 2.63519, -4.21631 )
 shape = SubResource( 18 )
+[connection signal="timeout" from="Robber/Timer" to="Robber" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Diamond/Timer" to="Diamond" method="TimerTimeout"]

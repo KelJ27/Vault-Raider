@@ -1,25 +1,38 @@
 extends KinematicBody2D
 
-var speed = 150
+enum {
+	IDLE,
+	NEW_DIRECTIION,
+	MOVE
+}
+
+const SPEED = 100
+var state = IDLE
+var direction = Vector2.RIGHT
 
 func _ready():
-	set_physics_process(true)
+	randomize()
+
+func _process(delta):
+	match state:
+		IDLE:
+			pass
+			
+		NEW_DIRECTIION:
+			direction = choose([Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN])
+			state = choose([IDLE, MOVE])
+			
+		MOVE:
+			 move(delta)
+			
+func move(delta):
+	position += direction * SPEED * delta
 	
-	
-func _fixed_process(delta):
-	var Move = Vector2()
-	var body = get_node("body").get_overlapping_bodies()
-	if(body.size() != 0):
-		for tinge in body:
-			if(tinge.is_in_group("Player")):
-				if(tinge.get_global_position().x < self.get_global_position().x):
-					Move += Vector2(-1,0)
-				if(tinge.get_global_position().x > self.get_global_position().x + 5):
-					Move += Vector2(1,0)
-				if(tinge.get_global_position().y < self.get_global_position().y +5):
-					Move += Vector2(0,-1)
-				if(tinge.get_global_position().y > self.get_global_position().y):
-					Move += Vector2(0,1)
-					
-	Move = Move.normalized() * speed * delta
-	Move = move_and_slide(Move)
+func choose(array):
+	array.shuffle()
+	return array.front()
+
+
+func _on_Timer_timeout():
+	$Timer.wait_time = choose([0.5, 1, 1.5])
+	state = choose([IDLE, NEW_DIRECTIION, MOVE])
