@@ -26,7 +26,7 @@ func _process(delta):
 			 move(delta)
 			
 func move(delta):
-	position += direction * SPEED * delta
+	move_and_collide(direction * SPEED * delta)
 	
 func choose(array):
 	array.shuffle()
